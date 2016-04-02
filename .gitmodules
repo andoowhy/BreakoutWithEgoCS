@@ -1,3 +1,3 @@
-[submodule "Assets/EgoCS"]
+[submodule "EgoCS"]
 	path = Assets/EgoCS
 	url = https://github.com/andoowhy/EgoCS
