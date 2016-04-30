@@ -11,9 +11,6 @@ GameObject:
   - 212: {fileID: 21287270}
   - 58: {fileID: 5887924}
   - 50: {fileID: 5029110}
-  - 114: {fileID: 11474624}
-  - 114: {fileID: 11478210}
-  - 114: {fileID: 11410126}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -64,41 +61,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.65
---- !u!114 &11410126
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 119174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27c97015c229fe544948db48d1dfa797, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &11474624
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 119174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 212847aaa3293c747bb61d1df0f788e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initialSpeed: 10
-  initialPosition: {x: 0, y: 0, z: 0}
---- !u!114 &11478210
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 119174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41be7b67f0bac1549830563ef6155c74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &21287270
 SpriteRenderer:
   m_ObjectHideFlags: 1

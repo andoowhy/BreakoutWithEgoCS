@@ -9,10 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 413512}
   - 212: {fileID: 21232684}
-  - 114: {fileID: 11458146}
   - 61: {fileID: 6113142}
-  - 114: {fileID: 11424838}
-  - 114: {fileID: 11453290}
   m_Layer: 0
   m_Name: Green
   m_TagString: Untagged
@@ -46,39 +43,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1.88, y: 0.88}
---- !u!114 &11424838
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 189274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41be7b67f0bac1549830563ef6155c74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &11453290
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 189274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b5c20d65f608fc41b04fbc5f20e151f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &11458146
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 189274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22ff768b263e929409da1378eb008d28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &21232684
 SpriteRenderer:
   m_ObjectHideFlags: 1
