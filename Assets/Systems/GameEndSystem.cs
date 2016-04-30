@@ -25,41 +25,31 @@ public class GameEndSystem : EgoSystem<BrickCount>
 
     void Handle( BrickCreatedEvent e )
     {
-        foreach( var bundle in bundles )
+        ForEachGameObject( ( EgoComponent ego, BrickCount brickCount ) =>
         {
-            var brickCount = bundle.component1;
-
             brickCount.initialNumBricks = e.totalNumBricks;
             brickCount.currentNumBricks++;
-
-            break;
-        }
+        } );
     }
 
     void Handle( BrickHitEvent e )
     {
-        foreach( var bundle in bundles )
+        ForEachGameObject( ( EgoComponent ego, BrickCount brickCount ) =>
         {
-            var brickCount = bundle.component1;
-
             brickCount.currentNumBricks--;
             if( brickCount.initialNumBricks > 0 && brickCount.currentNumBricks <= 0 )
             {
                 EgoEvents<GameEndEvent>.AddEvent( new GameEndEvent( GameEnd.WIN ) );
             }
-
-            break;
-        }
+        } );
     }
      
     void Handle( ResetGameEvent e )
     {
-        foreach( var bundle in bundles )
+        ForEachGameObject( ( EgoComponent ego, BrickCount brickCount ) =>
         {
-            var brickCount = bundle.component1;
-
             brickCount.currentNumBricks = 0;
             brickCount.initialNumBricks = 0;
-        }
+        } );
     }
 }

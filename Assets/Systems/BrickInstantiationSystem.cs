@@ -21,11 +21,8 @@ public class BrickInstantiationSystem : EgoSystem<Transform, BrickInstantiation>
 
     void InstantiateBricks()
     {
-        foreach( var bundle in bundles )
+        ForEachGameObject( ( EgoComponent ego, Transform transform, BrickInstantiation brickInstantiation ) =>
         {
-            var transform = bundle.component1;
-            var brickInstantiation = bundle.component2;
-
             // Remove all previous Bricks
             for( int i = 0; i < transform.childCount; i++ )
             {
@@ -55,10 +52,7 @@ public class BrickInstantiationSystem : EgoSystem<Transform, BrickInstantiation>
                     var e = new BrickCreatedEvent( brickInstantiation.rows * brickInstantiation.columns );
                     EgoEvents<BrickCreatedEvent>.AddEvent( e );
                 }
-            }
-
-            break;
-        }
+            }   
+        } );
     }
-
 }

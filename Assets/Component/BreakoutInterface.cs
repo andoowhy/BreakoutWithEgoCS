@@ -5,17 +5,18 @@ public class BreakoutInterface : MonoBehaviour
 {
     static BreakoutInterface()
     {
-        EgoSystems.systems.Add( new BallSystem() );
-        EgoSystems.systems.Add( new BrickInstantiationSystem());
-        EgoSystems.systems.Add( new BrickSystem() );
-        EgoSystems.systems.Add( new PaddleSystem() );
-        EgoSystems.systems.Add( new BallSystem() );
-        EgoSystems.systems.Add( new ScoreSystem() );
-        EgoSystems.systems.Add( new GameEndSystem() );
+        EgoSystems.Add(
+            new BallSystem(),
+            new BrickInstantiationSystem(),
+            new BrickSystem(),
+            new PaddleSystem(),
+            new BallSystem(),
+            new ScoreSystem(),
+            new GameEndSystem(),
 
-        // UI
-        EgoSystems.systems.Add( new PlayAgainButtonSystem() );
-        EgoSystems.systems.Add( new UISystem() );
+            new PlayAgainButtonSystem(),
+            new UISystem()
+        );
     }
 
 	void Start()

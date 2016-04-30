@@ -6,13 +6,12 @@ public class PlayAgainButtonSystem : EgoSystem<Button, UIPlayAgain>
 {
     public override void Start()
     {
-        foreach (var bundle in bundles)
+        ForEachGameObject( ( EgoComponent egoComponent, Button button, UIPlayAgain uiPlayAgain ) =>
         {
-            var button = bundle.component1;
-            button.onClick.AddListener( () =>
+            button.onClick.AddListener(() =>
             {
-                EgoEvents<ResetGameEvent>.AddEvent( new ResetGameEvent() );
+                EgoEvents<ResetGameEvent>.AddEvent(new ResetGameEvent());
             });
-        }
+        } );
     }
 }

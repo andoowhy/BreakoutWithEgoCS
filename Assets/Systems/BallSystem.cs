@@ -5,17 +5,12 @@ public class BallSystem : EgoSystem<Transform, Ball, Rigidbody2D, SpriteRenderer
 { 
     public override void Start()
     {
-        Debug.Log( "BallSystem Start: " + bundles.Count.ToString() + " bundles" );
-
         // Set the ball's initial position from the editor
-        foreach( var bundle in bundles )
+        ForEachGameObject( ( EgoComponent egoComponent, Transform transform, Ball ball, Rigidbody2D rigidbody2D, SpriteRenderer spriteRenderer ) =>
         {
-            var transform = bundle.component1;
-            var ball = bundle.component2;
-
             ball.initialPosition = transform.position;
-        }
-
+        });
+        
         Reset();
 
         // Add Event Handler
@@ -26,23 +21,17 @@ public class BallSystem : EgoSystem<Transform, Ball, Rigidbody2D, SpriteRenderer
 
     public override void FixedUpdate()
     {
-        foreach (var bundle in bundles)
+        ForEachGameObject( ( EgoComponent egoComponent, Transform transform, Ball ball, Rigidbody2D rigidbody2D, SpriteRenderer spriteRenderer ) =>
         {
-            var ball = bundle.component2;
-            var rb2D = bundle.component3;
-
-            if (ball && rb2D)
+            if( egoComponent.HasComponents<Pause>() )
             {
-                if (bundle.egoComponent.HasComponents<Pause>())
-                {
-                    if (rb2D.IsAwake()) rb2D.Sleep();
-                }
-                else
-                {
-                    rb2D.velocity = rb2D.velocity.normalized * ball.initialSpeed;
-                }
+                if( rigidbody2D.IsAwake() ) rigidbody2D.Sleep();
             }
-        }
+            else
+            {
+                rigidbody2D.velocity = rigidbody2D.velocity.normalized * ball.initialSpeed;
+            }
+        });
     }
 
     // Event Handler Methods
@@ -62,10 +51,10 @@ public class BallSystem : EgoSystem<Transform, Ball, Rigidbody2D, SpriteRenderer
 
     void Handle( GameEndEvent e )
     {
-        foreach (var bundle in bundles)
+        ForEachGameObject( ( EgoComponent egoComponent, Transform transform, Ball ball, Rigidbody2D rigidbody2D, SpriteRenderer spriteRenderer ) =>
         {
-            Ego.AddComponent<Pause>( bundle.egoComponent.gameObject );
-        }
+            Ego.AddComponent<Pause>( egoComponent.gameObject );
+        });
     }
 
     void Handle( ResetGameEvent e )
@@ -99,13 +88,9 @@ public class BallSystem : EgoSystem<Transform, Ball, Rigidbody2D, SpriteRenderer
 
     void Reset()
     {
-        foreach (var bundle in bundles)
+        ForEachGameObject( ( EgoComponent egoComponent, Transform transform, Ball ball, Rigidbody2D rigidbody2D, SpriteRenderer spriteRenderer ) =>
         {
-            var transform = bundle.component1;
-            var ball = bundle.component2;
-            var rb2D = bundle.component3;
-
-            Ego.Destroy<Pause>( bundle.egoComponent.gameObject );
+            Ego.Destroy<Pause>(egoComponent.gameObject);
 
             // Move the ball back to its initial position
             transform.position = ball.initialPosition;
@@ -113,8 +98,7 @@ public class BallSystem : EgoSystem<Transform, Ball, Rigidbody2D, SpriteRenderer
             // Give the ball a random velocity
             var theta = Random.Range(45f, 180f - 45f);
             var velocity = Quaternion.Euler(0f, 0f, theta) * Vector2.right;
-            rb2D.velocity = ball.initialSpeed * velocity;
-        }
-       
+            rigidbody2D.velocity = ball.initialSpeed * velocity;
+        });       
     }
 }

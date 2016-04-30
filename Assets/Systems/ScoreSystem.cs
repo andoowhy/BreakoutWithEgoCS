@@ -13,22 +13,18 @@ public class ScoreSystem : EgoSystem<Score>
 
     void Handle( IncreaseScoreEvent e )
     {
-        foreach( var bundle in bundles )
+        ForEachGameObject( (EgoComponent ego, Score score ) =>
         {
-            var score = bundle.component1;
             SetScore( score, score.score + e.increment );
-            break; // Only update one Score Component, avoids singletons
-        }
+        } );
     }
 
     void Handle( ResetGameEvent e )
     {
-        foreach (var bundle in bundles)
+        ForEachGameObject( (EgoComponent ego, Score score ) =>
         {
-            var score = bundle.component1;
             SetScore( score, 0 );
-            break; // Only update one Score Component, avoids singletons
-        }
+        } );
     }
 
     // Helper Methods
